@@ -3,6 +3,7 @@ import Films from "../../3_pages/Films"
 import Film from "../../3_pages/Film"
 import { ReactNode } from "react"
 import Error from "../../3_pages/Error"
+import { Navigate } from "react-router-dom"
 
 export type TypePathAndComponent={
 	path: string,
@@ -22,7 +23,11 @@ export const MassivePathAndComponent:TypePathAndComponent[]=[
 		element:<Film/>
 	},
 	{
-		path:'*',
+		path:'/Error',
 		element:<Error/>
+	},
+	{
+		path:"*",
+		element: <Navigate to="/Error"/>
 	}
 ]

@@ -4,16 +4,22 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
-		"dev": "vite",
+		"dev": "concurrently \"vite\" \"npm run server\"",
 		"build": "tsc -b && vite build",
 		"lint": "eslint .",
 		"preview": "vite preview",
 		"format": "prettier --write .",
 		"decor": "npm run format && npm run lint",
-		"format:check": "prettier --check ."
+		"format:check": "prettier --check .",
+		"server": "json-server --watch server/db.json --port 5000"
 	},
 	"dependencies": {
+		"@fortawesome/free-brands-svg-icons": "^6.7.2",
+		"@fortawesome/free-solid-svg-icons": "^6.7.2",
+		"@fortawesome/react-fontawesome": "^0.2.2",
+		"axios": "^1.7.9",
 		"bootstrap": "^5.3.3",
+		"json-server": "^1.0.0-beta.3",
 		"prettier": "^3.4.2",
 		"react": "^18.3.1",
 		"react-bootstrap": "^2.10.8",

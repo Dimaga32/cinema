@@ -1,4 +1,4 @@
-export type CardData = {
+export type TypeCardData = {
 	id: number
 	name: string
 	description: string

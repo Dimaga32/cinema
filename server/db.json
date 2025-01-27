@@ -1,0 +1,122 @@
+{"films":[
+  {
+    "id": 1,
+    "name": "The Lord of the Rings: The Fellowship of the Ring",
+    "description": "A young hobbit, Frodo, embarks on a perilous journey to destroy a powerful ring and save Middle-earth from darkness.",
+    "image": "https://dyn1.heritagestatic.com/lf?set=path%5B2%2F0%2F4%2F1%2F6%2F20416826%5D&call=url%5Bfile%3Aproduct.chain%5D",
+    "rating": 8.8,
+    "genre": "Fantasy"
+  },
+  {
+    "id": 2,
+    "name": "Inception",
+    "description": "A thief who steals secrets from within the subconscious must plant an idea into a target's mind.",
+    "image": "https://images.kinorium.com/movie/poster/472809/w1500_44943050.jpg",
+    "rating": 8.7,
+    "genre": "Action movie"
+  },
+  {
+    "id": 3,
+    "name": "Indiana Jones: Raiders of the Lost Ark",
+    "description": "Archaeologist Indiana Jones races against Nazis to recover the legendary Ark of the Covenant.",
+    "image": "https://telegra.ph/file/0a376dddc455db2424477.jpg",
+    "rating": 8.4,
+    "genre": "Adventures"
+  },
+  {
+    "id": 4,
+    "name": "Toy Story",
+    "description": "A cowboy doll is profoundly threatened when a new spaceman action figure supplants him as top toy in a boy's room.",
+    "image": "https://www.disneydining.com/wp-content/uploads/2015/10/toy-story-1995-wallpaper-1.jpg",
+    "rating": 8.3,
+    "genre": "Animation"
+  },
+  {
+    "id": 5,
+    "name": "The Dark Knight",
+    "description": "When the menace known as the Joker emerges, Batman must confront chaos and disorder in Gotham City.",
+    "image": "https://i.ytimg.com/vi/U9Cdz3T79MU/maxresdefault.jpg",
+    "rating": 9.0,
+    "genre": "Action movie"
+  },
+  {
+    "id": 6,
+    "name": "Forrest Gump",
+    "description": "The life of a man with a low IQ who inadvertently influences several historical events in the 20th century.",
+    "image": "https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_65465cf2e2f4081ea9491d0d_65465d85c25247659e32f920/scale_1200",
+    "rating": 8.8,
+    "genre": "Drama"
+  },
+  {
+    "id": 7,
+    "name": "Gladiator",
+    "description": "A former Roman General seeks justice after being betrayed by the corrupt emperor who murdered his family.",
+    "image": "https://i.ytimg.com/vi/cOCtabeT9G0/maxresdefault.jpg",
+    "rating": 8.5,
+    "genre": "Historical"
+  },
+  {
+    "id": 8,
+    "name": "La La Land",
+    "description": "A jazz pianist and an aspiring actress fall in love while pursuing their dreams in Los Angeles.",
+    "image": "https://avatars.mds.yandex.net/i?id=dde1ac42671b2b0842d2d4e4588aad65_l-12182650-images-thumbs&n=13",
+    "rating": 8.0,
+    "genre": "Musical"
+  },
+  {
+    "id": 9,
+    "name": "The Shining",
+    "description": "A family heads to an isolated hotel for the winter where a sinister presence influences the father into violence.",
+    "image": "https://images-0.rakuten.tv/storage/snapshot/shot/0b4813fc-9f55-4bee-9a81-f73498bca773-snapshot-1590667322.jpeg",
+    "rating": 8.4,
+    "genre": "Horror"
+  },
+  {
+    "id": 10,
+    "name": "Titanic",
+    "description": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the luxurious, ill-fated R.M.S. Titanic.",
+    "image": "https://avatars.mds.yandex.net/i?id=7e8a6d930597fc2510428a34cb25aac1_l-5181228-images-thumbs&n=13",
+    "rating": 7.8,
+    "genre": "Romance"
+  },
+  {
+    "id": 11,
+    "name": "The Matrix",
+    "description": "A computer hacker learns about the true nature of reality and his role in the war against its controllers.",
+    "image": "https://iv.kommersant.ru/Issues.photo/LifeStyle_Online/2019/03/29/KMO_111307_24478_1_t218_122831.jpg",
+    "rating": 8.7,
+    "genre": "Action movie"
+  },
+  {
+    "id": 12,
+    "name": "The Lion King",
+    "description": "A young lion prince flees his kingdom only to learn the true meaning of responsibility and bravery.",
+    "image": "https://i.ytimg.com/vi/xwu375Xu7HU/maxresdefault.jpg",
+    "rating": 8.5,
+    "genre": "Animation"
+  },
+  {
+    "id": 13,
+    "name": "The Grand Budapest Hotel",
+    "description": "The adventures of a legendary concierge and his protégé at a famous European hotel between the wars.",
+    "image": "https://i.pinimg.com/originals/76/16/81/7616813e244891e85affd505ec4f790c.jpg",
+    "rating": 8.1,
+    "genre": "Comedy"
+  },
+  {
+    "id": 14,
+    "name": "The Revenant",
+    "description": "A frontiersman on a fur trading expedition in the 1820s fights for survival after being mauled by a bear.",
+    "image": "https://m.media-amazon.com/images/M/MV5BYzdlNzQzZWMtY2VjNi00YmJlLTkwNzUtZjIzMjVkZjk5MjBjXkEyXkFqcGdeQXVyMzExODEzNDA@._V1_.jpg",
+    "rating": 8.0,
+    "genre": "Adventures"
+  },
+  {
+    "id": 15,
+    "name": "The Notebook",
+    "description": "A poor yet passionate young man falls in love with a rich young woman, giving her a sense of freedom, but they are soon separated.",
+    "image": "https://resizer.mail.ru/p/62ffa96d-31e5-562d-a213-bbae3bc44ac6/AQACdbUeURctFGMkn2vng0BtS7pmsgTB0m6TkbX4UQkycf0sw3-pHQwjb7QCPTX8Mwu3fRDrPj4GPJb4Xl1qGyGpHZo.jpg",
+    "rating": 7.8,
+    "genre": "Romance"
+  }
+]}
