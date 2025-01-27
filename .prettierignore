@@ -1,0 +1,7 @@
+node_modules/
+public/
+.idea/
+dist/
+build/
+*.log
+*.min.js
