@@ -1,0 +1,76 @@
+.Card {
+	cursor: pointer;
+	position: relative;
+	box-sizing: border-box;
+	display: inline-block;
+	width: 30vw;
+	height: 50vw;
+	border: 2px black solid;
+	overflow: hidden;
+}
+@media screen and (max-width: 992px) {
+	.Card {
+		display: inline-block;
+		width: 45vw;
+		height: 65vw;
+		overflow: hidden;
+	}
+}
+@media screen and (max-width: 650px) {
+	.Card {
+		display: inline-block;
+		width: 90vw;
+		height: 65vh;
+		overflow: hidden;
+	}
+}
+
+.Image {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	transition: transform 0.5s ease;
+	transform: scale(1);
+	&:hover {
+		transform: scale(1.2);
+	}
+}
+.pic,
+.Image,
+.obr {
+	box-sizing: border-box;
+	display: inline-block;
+	width: 30vw;
+	height: 50vw;
+	overflow: hidden;
+}
+@media screen and (max-width: 992px) {
+	.pic,
+	.Image,
+	.obr {
+		display: inline-block;
+		width: 45vw;
+		height: 65vw;
+		border: 2px black solid;
+		overflow: hidden;
+	}
+}
+@media screen and (max-width: 650px) {
+	.pic,
+	.Image,
+	.obr {
+		display: inline-block;
+		width: 90vw;
+		height: 65vh;
+		border: 2px black solid;
+		overflow: hidden;
+	}
+}
+.pic {
+	transform: none;
+	position: absolute;
+	top: 8vh;
+}
+.obr {
+	position: relative;
+}

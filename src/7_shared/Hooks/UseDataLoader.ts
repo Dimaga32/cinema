@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import axios, { AxiosResponse } from "axios";
+import { useEffect } from "react"
+import axios, { AxiosResponse } from "axios"
 
 export function useDataLoader<T>(
 	url: string,
@@ -10,10 +10,10 @@ export function useDataLoader<T>(
 		axios
 			.get<T>(url)
 			.then((res: AxiosResponse<T>): void => {
-				setData(res.data);
+				setData(res.data)
 			})
 			.catch((error: { message: string }): void => {
-				console.error("Ошибка:", error.message);
-			});
-	}, [url, ...deps]);
+				console.error("Ошибка:", error.message)
+			})
+	}, [url, ...deps])
 }

@@ -1,65 +1,71 @@
-.BlueDark{
-  background-color: #002a60;
+.BlueDark {
+	background-color: #002a60;
 }
-.Collapse{
-  display: inline-flex;
-  width: fit-content ;
-  padding-left: 0 ;
-  margin-left: 0 ;
-  flex-grow: 0;
-  align-items: center;
-  justify-content: center;
+.Collapse {
+	display: inline-flex;
+	width: fit-content;
+	padding-left: 0;
+	margin-left: 0;
+	flex-grow: 0;
+	align-items: center;
+	justify-content: center;
 }
-.logo{
-  filter:invert(100%);
+.logo {
+	filter: invert(100%);
 }
 .white {
-  color: white;
+	color: white;
 
-  &:hover,
-  &:focus {
-    color: #f8c146;
-  }
+	&:hover,
+	&:focus {
+		color: #f8c146;
+	}
 
-  &:active {
-    color: #cda13b;
-  }
+	&:active {
+		color: #cda13b;
+	}
 }
 .whiter {
-  color: white;
+	color: white;
 
-  /* Стили для треугольника */
-  .dropdown-toggle::after {
-    border-top-color: white; /* Цвет треугольника */
-  }
+	/* Стили для треугольника */
+	.dropdown-toggle::after {
+		border-top-color: white; /* Цвет треугольника */
+	}
 
-  &:hover,
-  &:focus {
-    color: #f8c146;
+	&:hover,
+	&:focus {
+		color: #f8c146;
 
-    .dropdown-toggle::after {
-      border-top-color: #f8c146; /* Цвет треугольника при наведении */
-    }
-  }
+		.dropdown-toggle::after {
+			border-top-color: #f8c146; /* Цвет треугольника при наведении */
+		}
+	}
 
-  &:active {
-    color: #cda13b;
+	&:active {
+		color: #cda13b;
 
-    .dropdown-toggle::after {
-      border-top-color: #cda13b; /* Цвет треугольника при активном состоянии */
-    }
-  }
+		.dropdown-toggle::after {
+			border-top-color: #cda13b; /* Цвет треугольника при активном состоянии */
+		}
+	}
 }
 
 .black {
-  text-align: center;
-  border: none;
-  color: white;
-  background-color: #002a60;
+	text-align: center;
+	border: none;
+	color: white;
+	background-color: #002a60;
 
-  &:hover,
-  &:focus {
-    color: #f8c146;
-    background-color: #00224c;
-  }
+	&:hover,
+	&:focus {
+		color: #f8c146;
+		background-color: #00224c;
+	}
+}
+header {
+	width: 100%;
+	position: fixed;
+	top: 0;
+	z-index: 2000;
 }

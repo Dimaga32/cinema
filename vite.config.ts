@@ -36,7 +36,6 @@ export default defineConfig({
 		},
 	},
 
-
 	// Настройки для оптимизации
 	optimizeDeps: {
 		include: ["react", "react-dom"], // Зависимости, которые будут предварительно оптимизированы

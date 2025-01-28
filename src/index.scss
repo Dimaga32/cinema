@@ -1,9 +1,18 @@
-body{
-	background-color: #874141;
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	background-color: #e87320;
+	overflow-x: hidden;
+
+	width: 100vw !important;
+	box-sizing: border-box !important;
 }
 .dropdown-menu {
 	background-color: #002a60;
-
 }
 
 @media screen and (max-width: 992px) {
@@ -11,10 +20,10 @@ body{
 		border: none;
 		width: 100vw;
 	}
-	.text-light .px-5 .fs-3 .nav-item .show .dropdown{
+	.text-light .px-5 .fs-3 .nav-item .show .dropdown {
 		width: 100vw;
 	}
 }
-.dropdown-toggle{
+.dropdown-toggle {
 	color: white !important;
 }

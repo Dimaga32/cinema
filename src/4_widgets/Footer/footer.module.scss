@@ -1,60 +1,59 @@
 .footer {
-  background-color: #000d25;
-  color: #fff;
-  padding: 2rem 0;
-  text-align: center;
-  .footerLinks {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    a {
-      color: #fff;
-      text-decoration: none;
+	background-color: #000d25;
+	color: #fff;
+	padding: 2rem 0;
+	text-align: center;
+	.footerLinks {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		a {
+			color: #fff;
+			text-decoration: none;
 
-      &:hover {
-        color: #f8c146;
+			&:hover {
+				color: #f8c146;
+			}
+			&:active {
+				color: #cda13b;
+			}
+		}
+	}
 
-      }
-      &:active {
-        color: #cda13b;
-      }
-    }
-  }
+	.socialIcons {
+		flex-grow: 1;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		a {
+			color: #fff;
+			margin-right: 0.5rem;
+			margin-left: 0.5rem;
+			&:hover {
+				display: inline-block;
+				color: #f8c146;
+			}
+			&:active {
+				color: #cda13b;
+			}
+		}
+	}
 
-  .socialIcons {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    a {
-      color: #fff;
-      margin-right: 0.5rem;
-      margin-left: 0.5rem;
-      &:hover {
-        display: inline-block;
-        color: #f8c146;
-      }
-      &:active {
-        color: #cda13b;
-      }
-    }
-  }
-
-  .contactInfo {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    flex-grow: 1;
-    p {
-      margin: 0;
-    }
-  }
+	.contactInfo {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		align-items: center;
+		flex-grow: 1;
+		p {
+			margin: 0;
+		}
+	}
 }
 .sector {
-  display: flex; /* Делаем сектор флекс-контейнером */
-  flex-direction: column; /* Элементы внутри располагаются вертикально */
-  align-items: center; /* Выравниваем элементы по центру по горизонтали */
+	display: flex; /* Делаем сектор флекс-контейнером */
+	flex-direction: column; /* Элементы внутри располагаются вертикально */
+	align-items: center; /* Выравниваем элементы по центру по горизонтали */
 
-  margin: 0 ; /* Убираем отступы */
+	margin: 0; /* Убираем отступы */
 }

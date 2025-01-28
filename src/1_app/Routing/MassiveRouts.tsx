@@ -5,29 +5,29 @@ import { ReactNode } from "react"
 import Error from "../../3_pages/Error"
 import { Navigate } from "react-router-dom"
 
-export type TypePathAndComponent={
-	path: string,
-	element:ReactNode
+export type TypePathAndComponent = {
+	path: string
+	element: ReactNode
 }
-export const MassivePathAndComponent:TypePathAndComponent[]=[
+export const MassivePathAndComponent: TypePathAndComponent[] = [
 	{
-		path:'/',
-		element:<Main/>
+		path: "/",
+		element: <Main />,
 	},
 	{
-		path:'/films',
-		element:<Films/>
+		path: "/films",
+		element: <Films />,
 	},
 	{
-		path:'/film/:id',
-		element:<Film/>
+		path: "/film/:id",
+		element: <Film />,
 	},
 	{
-		path:'/Error',
-		element:<Error/>
+		path: "/Error",
+		element: <Error />,
 	},
 	{
-		path:"*",
-		element: <Navigate to="/Error"/>
-	}
+		path: "*",
+		element: <Navigate to="/Error" />,
+	},
 ]
