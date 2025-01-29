@@ -1,8 +1,8 @@
 import { ReactNode } from "react"
-import { TypeCardData } from "../../../6_entitis/CardData/CardData.ts"
+import { TypeCardData } from "../../6_entitis/CardData/CardData.ts"
 import classes from "./Card.module.scss"
 
-export default function Card({ id, name, image }: TypeCardData): ReactNode {
+export default function CardContent({ id, name, image }: TypeCardData): ReactNode {
 	return (
 		<a href={`http://localhost:3000/Film/${id}`}>
 			<article id={`${id}`} className={classes.Card}>
