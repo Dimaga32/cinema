@@ -4,6 +4,13 @@ import CardContent from "./Card.tsx"
 
 export default function Card({ id, name, image }: TypeCardData): ReactNode {
 	return (
-		<CardContent id={id} name={name} image={image} description={""} rating={0} genre={"Fantasy"}/>
+		<CardContent
+			id={id}
+			name={name}
+			image={image}
+			description={""}
+			rating={0}
+			genre={"Fantasy"}
+		/>
 	)
 }

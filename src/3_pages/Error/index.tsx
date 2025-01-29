@@ -6,7 +6,16 @@ export default function Error(): ReactNode {
 	return (
 		<div>
 			<Header />
-			<h1 className={'text-center'} style={{marginTop:'20vh',marginBottom:'20vh',fontSize:`70px`}}>Error</h1>
+			<h1
+				className={"text-center"}
+				style={{
+					marginTop: "20vh",
+					marginBottom: "20vh",
+					fontSize: `70px`,
+				}}
+			>
+				Error
+			</h1>
 			<Footer />
 		</div>
 	)

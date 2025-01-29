@@ -1,27 +1,27 @@
 .searchWrapper {
-  display: flex;
-  align-items: center;
-  background-color: #1e2a47; /* темно-синий фон */
-  padding: 8px;
-  border-radius: 5px;
+	display: flex;
+	align-items: center;
+	background-color: #1e2a47; /* темно-синий фон */
+	padding: 8px;
+	border-radius: 5px;
 }
 
 .icon {
-  background-image: url('https://img.icons8.com/ios-filled/50/ffffff/search.png'); /* иконка лупы */
-  background-size: contain;
-  background-repeat: no-repeat;
-  opacity: 0.5; /* полупрозрачная иконка */
-  margin-right: 8px;
+	background-image: url("https://img.icons8.com/ios-filled/50/ffffff/search.png"); /* иконка лупы */
+	background-size: contain;
+	background-repeat: no-repeat;
+	opacity: 0.5; /* полупрозрачная иконка */
+	margin-right: 8px;
 }
 
 .input {
-  background: transparent;
-  border: none;
-  outline: none;
-  color: white; /* белый текст */
-  flex-grow: 1;
+	background: transparent;
+	border: none;
+	outline: none;
+	color: white; /* белый текст */
+	flex-grow: 1;
 
-  &::placeholder {
-    color: white; /* белый placeholder */
-  }
+	&::placeholder {
+		color: white; /* белый placeholder */
+	}
 }

@@ -11,32 +11,40 @@ import Stars from "../../7_shared/UI/stars"
 import Sessions from "../../5_features/Sessions"
 
 export default function FilmContent(): ReactNode {
-
 	const { id } = useParams()
 	const [film, Setfilm] = useState<TypeCardData>()
 	useDataLoader(`http://localhost:5000/films/${id}`, Setfilm, [])
 	return (
-		<div >
+		<div>
 			<Header />
-			{film == undefined ?
-				<div>Loaing</div> :
+			{film == undefined ? (
+				<div>Loaing</div>
+			) : (
 				<div className={classes.box}>
 					<h1 className="h1 text-center">{film.name}</h1>
-					<p className={"text-center fs-2"}><strong>Plot:</strong> {film.description}</p>
+					<p className={"text-center fs-2"}>
+						<strong>Plot:</strong> {film.description}
+					</p>
 					<Image
-						width={'80%'}
+						width={"80%"}
 						className={`align-self-center`}
 						src={film.image}
 						alt={`${film.name}.png`}
 					/>
-					<p className={"text-center fs-2"}><strong>Genre:</strong> {film.genre}</p>
-					<p className={"text-center fs-2"}><strong>Rating:</strong> {film.rating}</p>
-					<div className={`d-flex justify-content-center align-items-center`}>
+					<p className={"text-center fs-2"}>
+						<strong>Genre:</strong> {film.genre}
+					</p>
+					<p className={"text-center fs-2"}>
+						<strong>Rating:</strong> {film.rating}
+					</p>
+					<div
+						className={`d-flex justify-content-center align-items-center`}
+					>
 						<Stars rating={film.rating} width="80vw" />
 					</div>
-					<Sessions film={film}/>
+					<Sessions film={film} />
 				</div>
-			}
+			)}
 
 			<Footer />
 		</div>

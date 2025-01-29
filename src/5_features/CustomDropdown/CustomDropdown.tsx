@@ -1,15 +1,15 @@
 import { ReactNode, useState } from "react"
-import { Dropdown } from "react-bootstrap";
-import { TypeGenre } from "../../6_entitis/CardData/CardData.ts";
-import classes from "./CustomDropdown.module.scss";
+import { Dropdown } from "react-bootstrap"
+import { TypeGenre } from "../../6_entitis/CardData/CardData.ts"
+import classes from "./CustomDropdown.module.scss"
 
 interface GenreDropdownProps {
-	value: TypeGenre;
-	onChange: (genre: TypeGenre) => void;
-	width?: string;
-	height?: string;
-	fontSize?: string;
-	buttonColor?: string;
+	value: TypeGenre
+	onChange: (genre: TypeGenre) => void
+	width?: string
+	height?: string
+	fontSize?: string
+	buttonColor?: string
 }
 
 const genres: TypeGenre[] = [
@@ -24,26 +24,25 @@ const genres: TypeGenre[] = [
 	"Horror",
 	"Romance",
 	"none",
-];
+]
 
-export default function GenreDropdownContent(
-	{
-		value,
-		onChange,
-		width = "200px",
-		height = "40px",
-		fontSize = "16px",
-		buttonColor = "#1e2a47",
-	}: GenreDropdownProps):ReactNode {
-	const [selectedGenre, setSelectedGenre] = useState<TypeGenre>(value);
+export default function GenreDropdownContent({
+	value,
+	onChange,
+	width = "200px",
+	height = "40px",
+	fontSize = "16px",
+	buttonColor = "#1e2a47",
+}: GenreDropdownProps): ReactNode {
+	const [selectedGenre, setSelectedGenre] = useState<TypeGenre>(value)
 
-	const handleSelect = (genre: string | null):void => {
+	const handleSelect = (genre: string | null): void => {
 		if (genre && genres.includes(genre as TypeGenre)) {
-			const selected = genre as TypeGenre;
-			setSelectedGenre(selected);
-			onChange(selected);
+			const selected = genre as TypeGenre
+			setSelectedGenre(selected)
+			onChange(selected)
 		}
-	};
+	}
 
 	return (
 		<Dropdown onSelect={handleSelect}>
@@ -79,5 +78,5 @@ export default function GenreDropdownContent(
 				))}
 			</Dropdown.Menu>
 		</Dropdown>
-	);
+	)
 }

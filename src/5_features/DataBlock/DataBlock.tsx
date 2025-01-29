@@ -2,7 +2,11 @@ import { ReactNode } from "react"
 import { TypeCardData } from "../../6_entitis/CardData/CardData.ts"
 import classes from "./datablick.module.scss"
 
-export default function DataBlockContent({ id, name, image }: TypeCardData): ReactNode {
+export default function DataBlockContent({
+	id,
+	name,
+	image,
+}: TypeCardData): ReactNode {
 	return (
 		<a href={`http://localhost:3000/Film/${id}`}>
 			<article id={`${id}`} className={classes.Card}>

@@ -37,8 +37,7 @@
 	}
 }
 .sort {
-
-	width: 100%;  /* Заменено на 100% для предотвращения скроллинга */
+	width: 100%; /* Заменено на 100% для предотвращения скроллинга */
 	display: flex;
 	align-items: center;
 	justify-content: left;
@@ -48,10 +47,10 @@
 
 @media screen and (max-height: 800px) {
 	.sort {
-		padding-top: 16vh;  /* Увеличение отступа для мобильных устройств */
+		padding-top: 16vh; /* Увеличение отступа для мобильных устройств */
 	}
 }
-.genandstar{
+.genandstar {
 	margin-left: 15px;
 	display: flex;
 	flex-direction: column;
