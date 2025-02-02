@@ -1,8 +1,8 @@
 import { ReactNode } from "react"
-import { TypeCardData } from "../../6_entitis/CardData/CardData.ts"
+import { TypeCardData } from "../../6_entitis/CardData/CardDataEntiti.ts"
 import CardContent from "./Card.tsx"
 
-export default function Card({ id, name, image }: TypeCardData): ReactNode {
+export default function Card({ id, name, image, cost, show_days,show_times }: TypeCardData): ReactNode {
 	return (
 		<CardContent
 			id={id}
@@ -11,6 +11,9 @@ export default function Card({ id, name, image }: TypeCardData): ReactNode {
 			description={""}
 			rating={0}
 			genre={"Fantasy"}
+			cost={cost}
+			show_days={show_days}
+			show_times={show_times}
 		/>
 	)
 }

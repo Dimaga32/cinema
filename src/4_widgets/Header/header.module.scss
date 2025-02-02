@@ -69,3 +69,16 @@ header {
 	top: 0;
 	z-index: 2000;
 }
+.right{
+	float: right;
+}
+.toggleWhite {
+	color: white; /* Устанавливаем цвет текста (если нужно) */
+	border-color: white; /* Делаем границу белой */
+
+	&:hover,
+	&:focus {
+		color: #f8c146; /* Меняем цвет текста */
+		border-color: #f8c146 ; /* Меняем цвет границы */
+	}
+}

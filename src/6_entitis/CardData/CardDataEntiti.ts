@@ -5,7 +5,9 @@ export type TypeCardData = {
 	image: string
 	rating: number
 	genre: TypeGenre
-	shows?: TypeShows
+	show_days: TypeDays[]
+	show_times: TypeTime[]
+	cost: number
 }
 export type TypeGenre =
 	| "Fantasy"
@@ -19,14 +21,14 @@ export type TypeGenre =
 	| "Horror"
 	| "Romance"
 	| "none"
-type TypeDays =
+export type TypeDays =
 	| "Monday"
 	| "Tuesday"
 	| "Wednesday"
 	| "Thursday"
 	| "Friday"
 	| "Saturday"
-type TypeTime =
+export type TypeTime =
 	| "7:00"
 	| "9:00"
 	| "11:00"
@@ -36,7 +38,4 @@ type TypeTime =
 	| "19:00"
 	| "21:00"
 	| "23:00"
-type TypeShows = {
-	datOfWeek: TypeDays[]
-	time: [TypeTime[]]
-}
+

@@ -18,14 +18,11 @@ export default function FooterContent(): ReactNode {
 						<a className="fs-6" href="/">
 							Главная
 						</a>
-						<a className="fs-6" href="/movies">
+						<a className="fs-6" href="/Films">
 							Фильмы
 						</a>
-						<a className="fs-6" href="/schedule">
-							Расписание
-						</a>
-						<a className="fs-6" href="/contacts">
-							Контакты
+						<a className="fs-6" href="/purchases">
+							Купить билеты
 						</a>
 					</div>
 				</Col>

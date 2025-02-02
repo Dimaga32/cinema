@@ -1,10 +1,9 @@
 import { ReactNode } from "react"
 import GenreDropdownContent from "./CustomDropdown.tsx"
-import { TypeGenre } from "../../6_entitis/CardData/CardData.ts"
+import { TypeGenre } from "../../6_entitis/CardData/CardDataEntiti.ts"
 
 interface GenreDropdownProps {
 	value: TypeGenre
-	onChange: (genre: TypeGenre) => void
 	width?: string
 	height?: string
 	fontSize?: string
@@ -12,7 +11,6 @@ interface GenreDropdownProps {
 
 export default function CustomDropDown({
 	value,
-	onChange,
 	width = "200px",
 	height = "40px",
 	fontSize = "16px",
@@ -20,7 +18,6 @@ export default function CustomDropDown({
 	return (
 		<GenreDropdownContent
 			value={value}
-			onChange={onChange}
 			width={width}
 			height={height}
 			fontSize={fontSize}

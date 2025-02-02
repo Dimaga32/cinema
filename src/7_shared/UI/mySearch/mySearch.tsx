@@ -1,14 +1,19 @@
-import { ReactNode } from "react"
+import {  ReactNode } from "react"
 import classes from "./mysearch.module.scss"
 
-export default function MySearchContent({
-	width = "300px",
-	height = "40px",
-	fontSize = "16px",
-	onchange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		if (!e) return
-	},
-}): ReactNode {
+interface MySearchProps {
+	width?: string;
+	height?: string;
+	fontSize?: string;
+	onchange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // Типизация onChange
+}
+
+export default function MySearch({
+												width = "300px",
+												height = "40px",
+												fontSize = "16px",
+												onchange,
+											}: MySearchProps): ReactNode {
 	return (
 		<div className={classes.searchWrapper} style={{ width, height }}>
 			<span
@@ -19,7 +24,10 @@ export default function MySearchContent({
 				}}
 			/>
 			<input
-				onChange={onchange}
+				onChange={(e:React.ChangeEvent<HTMLInputElement>)=>{
+					if(!onchange)return
+					onchange(e)
+				}}
 				className={classes.input}
 				style={{ fontSize, height }}
 				placeholder="Поиск..."

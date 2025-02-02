@@ -1,11 +1,11 @@
 import { ReactNode, useState } from "react"
 import { Dropdown } from "react-bootstrap"
-import { TypeGenre } from "../../6_entitis/CardData/CardData.ts"
+import { TypeGenre } from "../../6_entitis/CardData/CardDataEntiti.ts"
 import classes from "./CustomDropdown.module.scss"
+import { useDispatch } from "react-redux"
 
 interface GenreDropdownProps {
 	value: TypeGenre
-	onChange: (genre: TypeGenre) => void
 	width?: string
 	height?: string
 	fontSize?: string
@@ -28,19 +28,19 @@ const genres: TypeGenre[] = [
 
 export default function GenreDropdownContent({
 	value,
-	onChange,
 	width = "200px",
 	height = "40px",
 	fontSize = "16px",
 	buttonColor = "#1e2a47",
 }: GenreDropdownProps): ReactNode {
 	const [selectedGenre, setSelectedGenre] = useState<TypeGenre>(value)
-
+	const dispatch=useDispatch()
 	const handleSelect = (genre: string | null): void => {
+
 		if (genre && genres.includes(genre as TypeGenre)) {
 			const selected = genre as TypeGenre
+			dispatch({type:'setGenre',payload:{genre:selected}})
 			setSelectedGenre(selected)
-			onChange(selected)
 		}
 	}
 

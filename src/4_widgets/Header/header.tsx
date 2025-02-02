@@ -6,10 +6,14 @@ import {
 	Image,
 	Dropdown,
 	NavDropdown,
+	Badge,
 } from "react-bootstrap"
 import classes from "./Header.module.scss"
+import { FaShoppingCart } from 'react-icons/fa'
 
-export default function HeaderContent(): ReactNode {
+
+export default function HeaderContent({ cartItemCounter = 0 }: { cartItemCounter?: number }): ReactNode {
+
 	return (
 		<header>
 			<Navbar expand="lg" className={classes.BlueDark}>
@@ -24,7 +28,7 @@ export default function HeaderContent(): ReactNode {
 						/>{" "}
 						Cinema
 					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" />
+					<Navbar.Toggle aria-controls="basic-navbar-nav" className={classes.toggleWhite} />
 					<Navbar.Collapse
 						id="basic-navbar-nav"
 						className={classes.Collapse}
@@ -48,25 +52,34 @@ export default function HeaderContent(): ReactNode {
 							>
 								<Dropdown.Item
 									className={classes.black + " px-5 fs-4"}
-									href="#action1"
+									href="/Register"
 								>
 									Register
 								</Dropdown.Item>
 								<Dropdown.Item
 									className={classes.black + " px-5 fs-4"}
-									href="#action2"
+									href="/Login"
 								>
 									Login
 								</Dropdown.Item>
 								<Dropdown.Item
 									className={classes.black + " px-5 fs-4"}
-									href="#action3"
+									href="/Account"
 								>
 									Account
 								</Dropdown.Item>
 							</NavDropdown>
 						</Nav>
 					</Navbar.Collapse>
+					<Nav.Link href="/Purchases">
+						<FaShoppingCart size={30} className={classes.white} style={{marginLeft:`2.5vw`}} />
+						{cartItemCounter >= 0 && (
+							<Badge pill className="ml-2">
+								{cartItemCounter}
+							</Badge>
+						)}
+					</Nav.Link>
+
 				</Container>
 			</Navbar>
 		</header>

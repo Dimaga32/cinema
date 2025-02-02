@@ -1,0 +1,139 @@
+.myGrid {
+	display: grid;
+}
+.mar {
+	margin-top: clamp(70px,6vw,90px);
+}
+.container {
+	max-width: 800px;
+	margin: auto;
+	padding: 20px;
+	background-color: #2a57a6; /* Тёмно-синий */
+	border-radius: 10px;
+}
+
+.title {
+	text-align: center;
+	color: white;
+	margin-bottom: 20px;
+}
+
+.list {
+	list-style: none;
+	padding: 0;
+}
+
+.item {
+	position: relative; /* Добавлено */
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 15px;
+	margin-bottom: 10px;
+	border-radius: 8px;
+	background-color: #142850; /* Чуть светлее тёмно-синего */
+	transition: transform 0.2s ease-in-out;
+}
+
+.item:hover {
+	transform: scale(1.02);
+}
+
+.image {
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	border-radius: 5px;
+}
+
+.info {
+	flex: 1;
+	color: white;
+}
+
+.name {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.description {
+	font-size: 14px;
+	color: #ff9f1c; /* Оранжевый */
+}
+
+.date {
+	font-size: 12px;
+	color: #ccc;
+}
+
+/* Статусы */
+.inProcess {
+	border-left: 5px solid orange;
+}
+
+.success {
+	border-left: 5px solid green;
+}
+
+.notValid {
+	border-left: 5px solid red;
+}
+
+/* 📱 Адаптивность */
+@media (max-width: 600px) {
+	.item {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.image {
+		width: 100%;
+		height: auto;
+	}
+}
+.deleteButton {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 40px; /* Делает кнопку квадратной */
+	height: 40px; /* Делает кнопку квадратной */
+	background-color: transparent;
+	color: red;
+	border: 2px solid red; /* Добавляет обводку */
+	border-radius: 8px; /* Немного закруглённые углы */
+	font-size: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out; /* Добавляет плавность при наведении */
+}
+
+.deleteButton:hover {
+	color: darkred;
+	border-color: darkred;
+	background-color: rgba(255, 0, 0, 0.1); /* Лёгкая подсветка при наведении */
+}
+.Mybtn{
+	display: inline-block;
+	height: 40px;
+	margin: 3%;
+	margin-top: 0px;
+	width: clamp(110px,40%,1000px);
+	border: black solid 1px;
+	color: white;
+	background-color: #002a60;
+	border-radius: 20px;
+	&:hover{
+		background-color: #00265c;
+	}
+	&:active{
+		border: white solid 1px;
+		background-color: #002753;
+	}
+}
+.totalCost{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}

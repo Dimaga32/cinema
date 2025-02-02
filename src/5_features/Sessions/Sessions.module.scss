@@ -4,3 +4,36 @@
 .mar {
 	margin-top: 2vh;
 }
+@media screen and (max-width: 664px) {
+	.myGrid {
+		grid-template-columns: 1fr !important;
+	}
+	.dayBlock{
+		margin: 3vh;
+	}
+}
+.el{
+	margin-top: 1vh;
+	display: flex;
+	justify-content: space-between;
+}
+.Mybtn{
+	display: inline-block;
+	height: 40px;
+	width: clamp(110px,25%,1000px);
+	border: black solid 1px;
+	margin-right: 15%;
+	color: white;
+	background-color: #002a60;
+	border-radius: 20px;
+	&:hover{
+		background-color: #00265c;
+	}
+	&:active{
+		border: white solid 1px;
+		background-color: #002753;
+	}
+}
+.marL{
+	margin-left: 15%;
+}
