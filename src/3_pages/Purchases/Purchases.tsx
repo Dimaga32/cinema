@@ -4,16 +4,15 @@ import Footer from "../../4_widgets/Footer";
 import Purchases from "../../5_features/Pushases";
 import { TypePurchases, TypePurchasesProps } from "../../6_entitis/Purchases/PurchasesEntiti.ts";
 import { TypeCardData } from "../../6_entitis/CardData/CardDataEntiti.ts";
-import { useDataLoaderTodb } from "../../7_shared/Hooks/useDataLoaderTodb.ts";
+import { usePurchasesLoader } from "../../7_shared/Hooks/usePurchasesLoader.ts"
 
 export default function PurchasesContent(): ReactNode {
 	const [film, setfilm] = useState<TypeCardData[]>([]); // Массив фильмов
-	const [purchases, setPurchases] = useState<TypePurchases[]>([]);
 	const [purchasesprops, setPurchasesprops] = useState<TypePurchasesProps[]>([]);
 
 	// Загружаем покупки
-	useDataLoaderTodb("http://localhost:5000/api/Purchases", setPurchases, []);
-
+	let count=0
+	const Userpurchases:TypePurchases[] = usePurchasesLoader([count])
 	const handleDelete = async (id: number) => {
 		try {
 			const response = await fetch(`http://localhost:5000/api/Purchases/${id}`, {
@@ -22,11 +21,8 @@ export default function PurchasesContent(): ReactNode {
 			});
 
 			if (!response.ok) throw new Error("Ошибка при удалении");
-
-			setPurchases(prev => {
-				const newPurchases = prev.filter(p => p.id !== id);
-				return newPurchases.length > 0 ? newPurchases : []; // ✅ ОБНОВЛЯЕМ ЧИСТО ПУСТОЙ МАССИВ
-			});
+			count++
+			Userpurchases.filter(p => p.id !== id)
 		} catch (error) {
 			console.error("Ошибка удаления:", error);
 		}
@@ -34,10 +30,10 @@ export default function PurchasesContent(): ReactNode {
 
 	// Загружаем фильмы по ID из покупок
 	useEffect(() => {
-		if (purchases.length) {
+		if (Userpurchases.length) {
 			const fetchFilms = async () => {
 				const filmData = await Promise.all(
-					purchases.map(async (purchase) => {
+					Userpurchases.map(async (purchase) => {
 						const response = await fetch(`http://localhost:5000/api/Film/${purchase.filmid}`);
 						if (response.ok) {
 							return response.json();
@@ -53,17 +49,17 @@ export default function PurchasesContent(): ReactNode {
 
 			fetchFilms();
 		}
-	}, [purchases]);
+	}, [Userpurchases]);
 
 	// Обновление пропсов покупок с добавлением данных о фильмах
 	useEffect(() => {
-		if (purchases.length === 0) {
+		if (Userpurchases.length === 0) {
 			setPurchasesprops([]); // 👈 Очищаем покупки-пропсы, если нет покупок
 			return;
 		}
 
-		if (film.length && purchases.length) {
-			const updatedPurchasesProps = purchases.map((purchase) => {
+		if (film.length && Userpurchases.length) {
+			const updatedPurchasesProps = Userpurchases.map((purchase) => {
 				const matchedFilm = film.find(f => Number(f.id) === Number(purchase.filmid));
 				if (matchedFilm) {
 					return {
@@ -79,11 +75,11 @@ export default function PurchasesContent(): ReactNode {
 
 			setPurchasesprops(updatedPurchasesProps as TypePurchasesProps[]);
 		}
-	}, [film, purchases]);
+	}, [film, Userpurchases]);
 
 	return (
 		<div>
-			<Header cartItemCounter={purchases.length}/>
+			<Header cartItemCounter={Userpurchases.length}/>
 			<Purchases purchases={purchasesprops} onDelete={handleDelete }/>
 			<Footer />
 		</div>

@@ -1,8 +1,8 @@
 import { pool } from "../db.js";
 
 // Получение всех покупок
-export async function getAllPurchases() {
-	const result = await pool.query('SELECT * FROM purchases');
+export async function getAllPurchases(userId: number) {
+	const result = await pool.query('SELECT * FROM purchases WHERE userid = $1', [userId]);
 	return result.rows;
 }
 

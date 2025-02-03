@@ -4,7 +4,7 @@ import { getPurchasesController, addPurchaseController, deletePurchaseController
 const router = Router();
 
 // Получение всех покупок
-router.get('/Purchases', getPurchasesController);
+router.get('/Purchases/:id', getPurchasesController);
 
 // Добавление новой покупки
 router.post('/Purchases', addPurchaseController);

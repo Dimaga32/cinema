@@ -58,7 +58,7 @@ export default function PurchasesContent(
 								<li className={classes.item + ` ` + classes[purchase.status]}>
 									<button
 										className={classes.deleteButton}
-										onClick={() => onDelete(purchase.id)}
+										onClick={() => {onDelete(purchase.id);location.reload();}}
 										aria-label={`Удалить ${purchase.name}`}
 									>
 										×

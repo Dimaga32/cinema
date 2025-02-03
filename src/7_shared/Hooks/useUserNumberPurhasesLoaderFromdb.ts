@@ -26,7 +26,6 @@
 						localStorage.setItem('accessToken', newAccessToken);
 					}
 					console.log(`res:`);
-					console.log(res.data);
 
 					setData(res.data);
 				})

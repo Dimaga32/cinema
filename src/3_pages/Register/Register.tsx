@@ -39,6 +39,7 @@ export default function RegisterContent(): ReactNode {
 			<div className={classes.formWrapper}>
 				<form className={classes.contactForm} onSubmit={(e)=>{
 					handleRegister(e,formData).then((res)=>setSuccses(res))
+					location.reload()
 				}}>
 					<label className={classes.label+` text-center fs-4`} htmlFor="name">Имя:</label>
 					<input

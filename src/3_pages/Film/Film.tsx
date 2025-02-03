@@ -43,6 +43,9 @@ export default function FilmContent(): ReactNode {
 						<strong>Genre:</strong> {film.genre}
 					</p>
 					<p className={"text-center fs-2"}>
+						<strong>Cost:</strong> {film.cost}
+					</p>
+					<p className={"text-center fs-2"}>
 						<strong>Rating:</strong> {film.rating}
 					</p>
 					<div

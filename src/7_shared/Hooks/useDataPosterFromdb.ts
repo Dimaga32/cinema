@@ -1,6 +1,36 @@
-import { TypeDays,TypeTime } from "../../6_entitis/CardData/CardDataEntiti.ts"
-export async function PostFunction(dayOfWeek: TypeDays, timeSeans: TypeTime, filmid: number) {
+import { TypeDays, TypeTime } from "../../6_entitis/CardData/CardDataEntiti.ts";
+
+export async function TicketsToCart(dayOfWeek: TypeDays, timeSeans: TypeTime, filmid: number) {
 	const url = "http://localhost:5000/api/Purchases";
+
+	const accessToken = localStorage.getItem('accessToken');
+	const refreshToken = localStorage.getItem('refreshToken');
+
+	// Если токенов нет, сразу выходим
+	if (!accessToken || !refreshToken) {
+		console.error("Tokens not found");
+		localStorage.removeItem('accessToken');
+		localStorage.removeItem('refreshToken');
+		return;
+	}
+
+	// Верификация токенов
+	const res = await fetch('http://localhost:5000/api/user/verify-tokens', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			Authorization: `Bearer ${accessToken}`,
+			'Refresh-Token': refreshToken || '',
+		},
+	});
+
+	if (!res.ok) {
+		console.error("Token verification failed");
+		return;
+	}
+
+	const dataId = await res.json();
+	const id = dataId.userId;
 
 	// Формируем дату в нужном формате
 	const currentDate = new Date();
@@ -21,11 +51,12 @@ export async function PostFunction(dayOfWeek: TypeDays, timeSeans: TypeTime, fil
 	const day = String(currentDate.getDate()).padStart(2, "0");
 	const [hours, minutes] = timeSeans.split(":");
 
-	const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}`;
+	// Форматируем дату с учетом UTC
+	const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:00Z`;
 
 	// Данные для отправки
 	const data = {
-		userid: 0,
+		userid: id,
 		data: formattedDate,
 		status: "inProcess",
 		filmid: filmid,

@@ -4,8 +4,9 @@ import { getAllPurchases, addPurchase, deletePurchase } from "../models/purchase
 // Контроллер для получения всех покупок
 export async function getPurchasesController(req: Request, res: Response) {
 	try {
-		const purchases = await getAllPurchases();
-		res.json(purchases);
+		const id:number=Number(req.params.id)
+		const purchases = await getAllPurchases(id);
+		res.status(200).json(purchases);
 	} catch (err) {
 		console.error('Error fetching purchases', err);
 		res.status(500).send('Database error');

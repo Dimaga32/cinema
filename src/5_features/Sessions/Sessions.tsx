@@ -3,7 +3,8 @@ import { TypeCardData, TypeTime } from "../../6_entitis/CardData/CardDataEntiti.
 import { ReactNode } from "react"
 import { TicketsToCart } from "./TicketsToCart.ts"
 
-function SessionsContent({ film,count,setData}: {film:TypeCardData,count:number,setData: React.Dispatch<React.SetStateAction<number>>}): ReactNode {
+function SessionsContent({ film}: {film:TypeCardData,count:number,setData: React.Dispatch<React.SetStateAction<number>>}): ReactNode {
+
 	return (
 		<div className={classes.mar}>
 			<h2 className={"h1 text-center"}>Sessions</h2>
@@ -29,7 +30,8 @@ function SessionsContent({ film,count,setData}: {film:TypeCardData,count:number,
 										</h4>
 										<button
 											onClick={() =>{
-												TicketsToCart(day, el as TypeTime, film.id, film.cost, count, setData);
+												TicketsToCart(day, el as TypeTime, film.id, film.cost);
+												location.reload()
 											}
 											}
 											className={classes.Mybtn + ` fs-5`}

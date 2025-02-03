@@ -32,7 +32,10 @@ export default function LoginContent(): ReactNode {
 		<div>
 			<Header cartItemCounter={purchases.length} />
 			<div className={classes.formWrapper}>
-				<form className={classes.contactForm} onSubmit={(e)=>handleLogin(e,formData).then((res)=>setSuccses(res))}>
+				<form className={classes.contactForm} onSubmit={(e)=>{
+					handleLogin(e,formData).then((res)=>setSuccses(res))
+					location.reload()
+				}}>
 					<label className={classes.label+` text-center fs-4`} htmlFor="email">Email:</label>
 					<input
 						className={classes.input+` fs-5`}

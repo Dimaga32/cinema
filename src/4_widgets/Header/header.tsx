@@ -12,20 +12,19 @@ import classes from "./Header.module.scss"
 import { FaShoppingCart } from 'react-icons/fa'
 import { useState } from "react"
 import { useVerifyTokens } from "../../7_shared/Hooks/useVerifyTokens.ts"
-import { useUserNumberPurhasesLoaderFromdb } from "../../7_shared/Hooks/useUserNumberPurhasesLoaderFromdb.ts"
+import { useCheckTokensAndPurchasesNumber } from "../../7_shared/Hooks/useCheckTokensAndPurchasesNumber.ts"
 
-export default function HeaderContent({ cartItemCounter = 0 }: { cartItemCounter?: number }): ReactNode {
+export default function HeaderContent(): ReactNode {
 	const [id, setId] = useState<number | false>(false);
 
-	useVerifyTokens((verifiedId) => {
-		if (verifiedId && Number.isInteger(verifiedId)) {
-			setId(verifiedId);
-		} else {
-			setId(false);
-		}
-	});
-	const[number,setNumber] = useState<number|false>(0)
-	useUserNumberPurhasesLoaderFromdb(`http://localhost:5000/api/user/purchases-number`,setNumber,[])
+		useVerifyTokens((verifiedId) => {
+			if (verifiedId && Number.isInteger(verifiedId)) {
+				setId(verifiedId);
+			} else {
+				setId(false);
+			}
+		});
+	const number=useCheckTokensAndPurchasesNumber([])
 	return (
 		<header>
 			<Navbar expand="lg" className={classes.BlueDark}>

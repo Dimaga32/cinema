@@ -3,7 +3,7 @@ import {
 	getUserController,
 	addUserController,
 	checkUserController,
-	getPurchasesNumberUserController
+	getPurchasesNumberUserController,
 } from "../controllers/user.controller.js";
 import { verifyTokensMiddleware } from "../middlewares/verify.middlware.js"
 
@@ -30,6 +30,5 @@ router.post('/user/verify-tokens', verifyTokensMiddleware, (req, res) => {
 		res.status(401).json({ message: 'Unauthorized' });
 	}
 });
-router.get('/user/purchases-number', verifyTokensMiddleware, getPurchasesNumberUserController);
-
+router.get('/user/purchases-number/:id', getPurchasesNumberUserController);
 export default router;

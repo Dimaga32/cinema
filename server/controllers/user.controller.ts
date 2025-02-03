@@ -105,19 +105,11 @@ export async function getPurchasesNumberUserController(
 	res: Response
 ): Promise<void> {
 	try {
-		console.log(`Покупки!`);
-		console.log(req.user); // Показывает данные пользователя
-		if (!req.user?.id) {
-			res.status(401).json({ error: 'Unauthorized' });
-			return;
-		}
-
-		const purchasesNumber = await getPurchasesNumber(req.user.id);
-		console.log("Количество покупок:", purchasesNumber); // Логируем результат
-
-		res.status(200).json({ count: purchasesNumber });
+		const id:number=Number(req.params.id)
+		const purchasesNumber = await getPurchasesNumber(id);
+		res.status(200).json({ purchasesNumber: purchasesNumber });
 	} catch (err) {
 		console.error('Error fetching purchases count:', err);
-		res.status(500).json({ error: 'Internal server error' });
+		res.status(500).json({ purchasesNumber: 0 });
 	}
 }

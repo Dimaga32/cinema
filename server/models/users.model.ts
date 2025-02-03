@@ -23,6 +23,6 @@ export async function checkUser(email: string) {
 	return result.rows[0];
 }
 export async function getPurchasesNumber(userId: number): Promise<number> {
-	const result = await pool.query('SELECT * FROM purchases WHERE usrid = $1', [userId]);
+	const result = await pool.query('SELECT * FROM purchases WHERE userid = $1', [userId]);
 	return result.rows.length;
 }

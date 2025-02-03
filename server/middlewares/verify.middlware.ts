@@ -3,11 +3,13 @@ import jwt from 'jsonwebtoken';
 
 const ACCESS_SECRET = '*&v%^ryCTYVBIOJPKJHVTYRUIO';
 const REFRESH_SECRET = 'jkui&*g^&fRTCVBUIHIO8976';
+
 declare module 'express-serve-static-core' {
 	interface Request {
 		user?: { id: number; email: string }; // Укажите ваш тип
 	}
 }
+
 interface UserPayload {
 	userId: number;
 	email: string;
@@ -120,4 +122,3 @@ export function verifyTokensMiddleware(
 		}
 	}
 }
-
