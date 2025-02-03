@@ -1,64 +1,123 @@
 import { Request, Response } from 'express';
-import { getUser, addUser, checkUser } from "../models/users.model.js";
-import crypto from  'crypto'
+import { getUserById, addUser, checkUser, getPurchasesNumber } from "../models/users.model.js"
+import bcrypt from 'bcrypt';
+import jwt from "jsonwebtoken"
+const ACCESS_SECRET = '*&v%^ryCTYVBIOJPKJHVTYRUIO';
+const REFRESH_SECRET = 'jkui&*g^&fRTCVBUIHIO8976';
+// Получение пользователя по ID
 
-function hashPassword(password: string):string {
-	return crypto.createHash('sha256').update(password).digest('hex');
-}
-// Контроллер для получения пользователя
 export async function getUserController(req: Request, res: Response) {
-	const { id } = req.params;
-	const userId = Number(id);
-
-	if (isNaN(userId)) {
-		return res.status(400).json({ error: "Invalid user ID" });
-	}
-
 	try {
-		const user = await getUser(userId);
-		res.json(user);
-	} catch (err) {
-		console.error('Error fetching user', err);
-		res.status(500).send('Database error');
-	}
-}
+		const userId = Number(req.params.id);
 
-// Контроллер для добавления нового пользователя
-export async function addUserController(req: Request, res: Response) {
-	try {
-		const { name, password, verified, email } = req.body;
-		const hash_password:string=await hashPassword(password)
-		await addUser(name, hash_password, verified, email);
-		const accessToken:string=''
-		const refreshToken:string=''
-		res.status(201).send(JSON.stringify({accessToken, refreshToken }));
-	} catch (err) {
-		console.error('Error adding user', err);
-		res.status(500).send('Database error');
-	}
-}
+		if (isNaN(userId)) {
+			res.status(400).send("Invalid userId");
+			return;
+		}
 
-// Контроллер для проверки пользователя по ID
-export async function checkUserController(req: Request, res: Response) {
-	const { userData } = req.body;
-	const { id } = req.params;
-	const userId = Number(id);
+		const user = await getUserById(userId);
 
-	if (isNaN(userId)) {
-		return res.status(400).json({ error: "Invalid user ID" });
-	}
-
-	try {
-		const { name_or_email, hash_password } = userData;
-		const checked = await checkUser(name_or_email, hash_password, userId);
-
-		if (checked) {
-			res.status(200).send('User checked');
+		if (user) {
+			res.json({
+				id: user.id,
+				name: user.name,
+				email: user.email,
+				verified: user.verified,
+			});
 		} else {
-			res.status(404).send('User not found');
+			res.status(404).send("User not found");
 		}
 	} catch (err) {
-		console.error('Error checking user', err);
+		console.error("Error fetching user", err);
+		res.status(500).send("Database error");
+	}
+}
+
+
+
+// Регистрация пользователя
+export async function addUserController(req: Request, res: Response) {
+	try {
+		const { name, email, password } = req.body;
+		const hash_password = await bcrypt.hash(password, 10);
+
+		const newUser = await addUser(name, email, hash_password, false);
+
+		// Генерация токенов
+		const accessToken = jwt.sign(
+			{ userId: newUser.id, email: newUser.email },
+			ACCESS_SECRET,
+			{ expiresIn: '15m' }
+		);
+		const refreshToken = jwt.sign(
+			{ userId: newUser.id, email: newUser.email },
+			REFRESH_SECRET,
+			{ expiresIn: '7d' }
+		);
+		// Установка заголовков
+		 res.setHeader('Access-Token', accessToken);
+		 res.setHeader('Refresh-Token', refreshToken);
+
+		res.status(201).json({ message: 'User registered successfully' });
+	} catch (err) {
+		console.error('Error registering user', err);
 		res.status(500).send('Database error');
+	}
+}
+
+// Логин
+export async function checkUserController(
+	req: Request,
+	res: Response
+): Promise<void> {
+	try {
+		const { email, password } = req.body;
+		const user = await checkUser(email);
+
+		if (!user || !(await bcrypt.compare(password, user.hash_password))) {
+			res.status(401).send('Invalid credentials');
+			return;
+		}
+
+		// Генерация токенов
+		const accessToken = jwt.sign(
+			{ userId: user.id, email: user.email },
+			ACCESS_SECRET,
+			{ expiresIn: '15m' }
+		);
+		const refreshToken = jwt.sign(
+			{ userId: user.id, email: user.email },
+			REFRESH_SECRET,
+			{ expiresIn: '7d' }
+		);
+
+		// Отправка токенов в заголовках
+		res.setHeader('Access-Token', accessToken);
+		res.setHeader('Refresh-Token', refreshToken);
+		res.json({ message: 'Login successful' });
+	} catch (err) {
+		console.error('Error during login', err);
+		res.status(500).send('Database error');
+	}
+}
+export async function getPurchasesNumberUserController(
+	req: Request,
+	res: Response
+): Promise<void> {
+	try {
+		console.log(`Покупки!`);
+		console.log(req.user); // Показывает данные пользователя
+		if (!req.user?.id) {
+			res.status(401).json({ error: 'Unauthorized' });
+			return;
+		}
+
+		const purchasesNumber = await getPurchasesNumber(req.user.id);
+		console.log("Количество покупок:", purchasesNumber); // Логируем результат
+
+		res.status(200).json({ count: purchasesNumber });
+	} catch (err) {
+		console.error('Error fetching purchases count:', err);
+		res.status(500).json({ error: 'Internal server error' });
 	}
 }

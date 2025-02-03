@@ -1,32 +1,28 @@
 import { pool } from "../db.js";
 
-// Получение пользователя по ID
-export async function getUser(id: number) {
-	const result = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
-	return result.rows[0];
-}
-
-// Добавление нового пользователя
-export async function addUser(name: string, hash_password: string, verified: boolean, email: string) {
-	const existingUser = await pool.query('SELECT id FROM users WHERE email = $1', [email]);
-	if (existingUser.rows.length > 0) {
-		throw new Error('Email уже используется');
+export async function getUserById(userId: number) {
+	// Убедитесь, что userId — это целое число
+	if (!Number.isInteger(userId)) {
+		throw new Error(`Invalid userId: ${userId}`);
 	}
-	const result = await pool.query(
-		`INSERT INTO users (name, hash_password, verified, email) 
-     VALUES ($1, $2, $3, $4) 
-     RETURNING *`,
-		[name, hash_password, verified, email]
-	);
+	const query = 'SELECT * FROM users WHERE id = $1';
+	const result = await pool.query(query, [userId]);
 	return result.rows[0];
-
 }
 
-// Проверка пользователя
-export async function checkUser(name_or_email: string, hash_password: string, id: number) {
+export async function addUser(name: string, email: string, hash_password: string, verified: boolean) {
 	const result = await pool.query(
-		'SELECT * FROM users WHERE (name = $1 OR email = $1) AND hash_password = $2 AND id = $3',
-		[name_or_email, hash_password, id]
+		'INSERT INTO users (name, email, hash_password, verified) VALUES ($1, $2, $3, $4) RETURNING *',
+		[name, email, hash_password, verified]
 	);
-	return result.rows.length > 0;
+	return result.rows[0];
+}
+
+export async function checkUser(email: string) {
+	const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+	return result.rows[0];
+}
+export async function getPurchasesNumber(userId: number): Promise<number> {
+	const result = await pool.query('SELECT * FROM purchases WHERE usrid = $1', [userId]);
+	return result.rows.length;
 }

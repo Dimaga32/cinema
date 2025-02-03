@@ -8,8 +8,10 @@ import user from './routes/user.routes.js'
 const app = express();
 const port = 5000;
 
-app.use(cors());  // Разрешаем все домены (для разработки)
-
+app.use(cors({
+	origin: 'http://localhost:3000', // URL вашего фронтенда
+	exposedHeaders: ['Access-Token', 'Refresh-Token'] // <-- Важно!
+}));
 app.use(express.json());
 
 app.use('/api', filmsRoutes);
@@ -17,4 +19,4 @@ app.use('/api', purchasesRoutes); // добавьте это после марш
 app.use('/api', user);
 app.listen(port, () => {
 	console.log(`Server is running on http://localhost:${port}`);
-});
+})

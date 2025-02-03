@@ -43,7 +43,7 @@ export const MassivePathAndComponent: TypePathAndComponent[] = [
 		element: <Error />,
 	},
 	{
-		path: "/Account",
+		path: "/Account/:id",
 		element: <Account />,
 	},
 	{

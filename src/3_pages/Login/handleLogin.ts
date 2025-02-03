@@ -1,9 +1,8 @@
 import { FormEvent } from "react";
 
-export async function handleRegister(
+export async function handleLogin(
 	e: FormEvent<HTMLFormElement>,
 	formData: {
-		name: string;
 		email: string;
 		password: string;
 	}
@@ -11,12 +10,12 @@ export async function handleRegister(
 	e.preventDefault();
 
 	try {
-		const response = await fetch("http://localhost:5000/api/user/register", {
+		const response = await fetch("http://localhost:5000/api/user/login", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({ ...formData, verified: false }),
+			body: JSON.stringify(formData),
 		});
 
 		// Логируем весь ответ для отладки

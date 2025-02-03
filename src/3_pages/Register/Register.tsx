@@ -64,7 +64,7 @@ export default function RegisterContent(): ReactNode {
 						required
 					/>
 
-					<label className={classes.label+` text-center fs-4`} htmlFor="password">Пароль:</label>
+					<label className={classes.label+` text-center fs-4`} htmlFor="password">Password:</label>
 					<input
 						className={classes.input+` fs-5`}
 						type="password"

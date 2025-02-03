@@ -10,10 +10,22 @@ import {
 } from "react-bootstrap"
 import classes from "./Header.module.scss"
 import { FaShoppingCart } from 'react-icons/fa'
-
+import { useState } from "react"
+import { useVerifyTokens } from "../../7_shared/Hooks/useVerifyTokens.ts"
+import { useUserNumberPurhasesLoaderFromdb } from "../../7_shared/Hooks/useUserNumberPurhasesLoaderFromdb.ts"
 
 export default function HeaderContent({ cartItemCounter = 0 }: { cartItemCounter?: number }): ReactNode {
+	const [id, setId] = useState<number | false>(false);
 
+	useVerifyTokens((verifiedId) => {
+		if (verifiedId && Number.isInteger(verifiedId)) {
+			setId(verifiedId);
+		} else {
+			setId(false);
+		}
+	});
+	const[number,setNumber] = useState<number|false>(0)
+	useUserNumberPurhasesLoaderFromdb(`http://localhost:5000/api/user/purchases-number`,setNumber,[])
 	return (
 		<header>
 			<Navbar expand="lg" className={classes.BlueDark}>
@@ -64,20 +76,28 @@ export default function HeaderContent({ cartItemCounter = 0 }: { cartItemCounter
 								</Dropdown.Item>
 								<Dropdown.Item
 									className={classes.black + " px-5 fs-4"}
-									href="/Account"
+									href={`/Account/${id?id:""}`}
 								>
 									Account
+								</Dropdown.Item>
+								<Dropdown.Item
+									className={classes.black + " px-5 fs-4"}
+									onClick={()=>{
+										localStorage.removeItem("refreshToken")
+										localStorage.removeItem("accessToken")
+										location.reload()
+									}}
+								>
+									Logout
 								</Dropdown.Item>
 							</NavDropdown>
 						</Nav>
 					</Navbar.Collapse>
 					<Nav.Link href="/Purchases">
 						<FaShoppingCart size={30} className={classes.white} style={{marginLeft:`2.5vw`}} />
-						{cartItemCounter >= 0 && (
 							<Badge pill className="ml-2">
-								{cartItemCounter}
+								{number?number:0}
 							</Badge>
-						)}
 					</Nav.Link>
 
 				</Container>
