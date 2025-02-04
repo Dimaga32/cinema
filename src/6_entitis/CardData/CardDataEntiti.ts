@@ -38,4 +38,3 @@ export type TypeTime =
 	| "19:00"
 	| "21:00"
 	| "23:00"
-

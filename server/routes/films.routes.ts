@@ -1,12 +1,15 @@
-import { Router } from 'express';
-import { getFilmsController, getFilmByIdController } from "../controllers/films.controller.js"
+import { Router } from "express"
+import {
+	getFilmsController,
+	getFilmByIdController,
+} from "../controllers/films.controller.js"
 
-const router = Router();
+const router = Router()
 
 // Получение всех фильмов
-router.get('/Films', getFilmsController);
+router.get("/Films", getFilmsController)
 
 // Получение фильма по ID
-router.get('/Film/:id', getFilmByIdController);
+router.get("/Film/:id", getFilmByIdController)
 
-export default router;
+export default router

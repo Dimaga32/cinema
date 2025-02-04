@@ -8,32 +8,32 @@
 	.myGrid {
 		grid-template-columns: 1fr !important;
 	}
-	.dayBlock{
+	.dayBlock {
 		margin: 3vh;
 	}
 }
-.el{
+.el {
 	margin-top: 1vh;
 	display: flex;
 	justify-content: space-between;
 }
-.Mybtn{
+.Mybtn {
 	display: inline-block;
 	height: 40px;
-	width: clamp(110px,25%,1000px);
+	width: clamp(110px, 25%, 1000px);
 	border: black solid 1px;
 	margin-right: 15%;
 	color: white;
 	background-color: #002a60;
 	border-radius: 20px;
-	&:hover{
+	&:hover {
 		background-color: #00265c;
 	}
-	&:active{
+	&:active {
 		border: white solid 1px;
 		background-color: #002753;
 	}
 }
-.marL{
+.marL {
 	margin-left: 15%;
 }

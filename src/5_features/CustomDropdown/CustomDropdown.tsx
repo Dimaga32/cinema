@@ -34,12 +34,11 @@ export default function GenreDropdownContent({
 	buttonColor = "#1e2a47",
 }: GenreDropdownProps): ReactNode {
 	const [selectedGenre, setSelectedGenre] = useState<TypeGenre>(value)
-	const dispatch=useDispatch()
+	const dispatch = useDispatch()
 	const handleSelect = (genre: string | null): void => {
-
 		if (genre && genres.includes(genre as TypeGenre)) {
 			const selected = genre as TypeGenre
-			dispatch({type:'setGenre',payload:{genre:selected}})
+			dispatch({ type: "setGenre", payload: { genre: selected } })
 			setSelectedGenre(selected)
 		}
 	}

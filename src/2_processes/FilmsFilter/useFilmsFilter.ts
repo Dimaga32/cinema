@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react"
-import { TypeCardData, TypeGenre } from "../../6_entitis/CardData/CardDataEntiti.ts"
+import {
+	TypeCardData,
+	TypeGenre,
+} from "../../6_entitis/CardData/CardDataEntiti.ts"
 
 export default function useFilmsFilter(
 	films: TypeCardData[],

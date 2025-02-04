@@ -9,22 +9,22 @@ import {
 	Badge,
 } from "react-bootstrap"
 import classes from "./Header.module.scss"
-import { FaShoppingCart } from 'react-icons/fa'
+import { FaShoppingCart } from "react-icons/fa"
 import { useState } from "react"
 import { useVerifyTokens } from "../../7_shared/Hooks/useVerifyTokens.ts"
 import { useCheckTokensAndPurchasesNumber } from "../../7_shared/Hooks/useCheckTokensAndPurchasesNumber.ts"
 
 export default function HeaderContent(): ReactNode {
-	const [id, setId] = useState<number | false>(false);
+	const [id, setId] = useState<number | false>(false)
 
-		useVerifyTokens((verifiedId) => {
-			if (verifiedId && Number.isInteger(verifiedId)) {
-				setId(verifiedId);
-			} else {
-				setId(false);
-			}
-		});
-	const number=useCheckTokensAndPurchasesNumber([])
+	useVerifyTokens((verifiedId) => {
+		if (verifiedId && Number.isInteger(verifiedId)) {
+			setId(verifiedId)
+		} else {
+			setId(false)
+		}
+	})
+	const number = useCheckTokensAndPurchasesNumber([])
 	return (
 		<header>
 			<Navbar expand="lg" className={classes.BlueDark}>
@@ -39,7 +39,10 @@ export default function HeaderContent(): ReactNode {
 						/>{" "}
 						Cinema
 					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="basic-navbar-nav" className={classes.toggleWhite} />
+					<Navbar.Toggle
+						aria-controls="basic-navbar-nav"
+						className={classes.toggleWhite}
+					/>
 					<Navbar.Collapse
 						id="basic-navbar-nav"
 						className={classes.Collapse}
@@ -75,13 +78,13 @@ export default function HeaderContent(): ReactNode {
 								</Dropdown.Item>
 								<Dropdown.Item
 									className={classes.black + " px-5 fs-4"}
-									href={`/Account/${id?id:""}`}
+									href={`/Account/${id ? id : ""}`}
 								>
 									Account
 								</Dropdown.Item>
 								<Dropdown.Item
 									className={classes.black + " px-5 fs-4"}
-									onClick={()=>{
+									onClick={() => {
 										localStorage.removeItem("refreshToken")
 										localStorage.removeItem("accessToken")
 										location.reload()
@@ -93,12 +96,15 @@ export default function HeaderContent(): ReactNode {
 						</Nav>
 					</Navbar.Collapse>
 					<Nav.Link href="/Purchases">
-						<FaShoppingCart size={30} className={classes.white} style={{marginLeft:`2.5vw`}} />
-							<Badge pill className="ml-2">
-								{number?number:0}
-							</Badge>
+						<FaShoppingCart
+							size={30}
+							className={classes.white}
+							style={{ marginLeft: `2.5vw` }}
+						/>
+						<Badge pill className="ml-2">
+							{number ? number : 0}
+						</Badge>
 					</Nav.Link>
-
 				</Container>
 			</Navbar>
 		</header>

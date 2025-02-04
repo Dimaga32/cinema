@@ -15,9 +15,9 @@ import { useDataLoaderTodb } from "../../7_shared/Hooks/useDataLoaderTodb.ts"
 export default function FilmContent(): ReactNode {
 	const { id } = useParams()
 	const [film, Setfilm] = useState<TypeCardData>()
-	const [purchases, setPurchases] = useState<TypePurchases[]>([]);
+	const [purchases, setPurchases] = useState<TypePurchases[]>([])
 	useDataLoader(`http://localhost:5000/api/Film/${id}`, Setfilm, [])
-	useDataLoaderTodb("http://localhost:5000/api/Purchases", setPurchases, []);
+	useDataLoaderTodb("http://localhost:5000/api/Purchases", setPurchases, [])
 	return (
 		<div>
 			<Header cartItemCounter={purchases.length} />

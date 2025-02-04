@@ -14,14 +14,14 @@ import { useEffect } from "react"
 
 export default function FilmContent(): ReactNode {
 	const { id } = useParams()
-	const [purchases, setPurchases] = useState<TypePurchases[]>([]);
+	const [purchases, setPurchases] = useState<TypePurchases[]>([])
 	const [film, Setfilm] = useState<TypeCardData>()
 	useDataLoaderTodb(`http://localhost:5000/api/Film/${id}`, Setfilm, [])
-	useDataLoaderTodb("http://localhost:5000/api/Purchases", setPurchases, []);
-	const [count,setCount]=useState<number>(purchases.length)
+	useDataLoaderTodb("http://localhost:5000/api/Purchases", setPurchases, [])
+	const [count, setCount] = useState<number>(purchases.length)
 	useEffect(() => {
 		setCount(purchases.length)
-	},[purchases])
+	}, [purchases])
 	return (
 		<div>
 			<Header cartItemCounter={count} />
@@ -43,10 +43,13 @@ export default function FilmContent(): ReactNode {
 						<strong>Genre:</strong> {film.genre}
 					</p>
 					<p className={"text-center fs-2"}>
-						<strong>Cost:</strong> {film.cost}
-					</p>
-					<p className={"text-center fs-2"}>
 						<strong>Rating:</strong> {film.rating}
+					</p>
+					<p
+						className={"text-center fs-2"}
+						style={{ marginBottom: `35px` }}
+					>
+						<strong>Cost:</strong> {film.cost}
 					</p>
 					<div
 						className={`d-flex justify-content-center align-items-center`}

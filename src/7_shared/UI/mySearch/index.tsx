@@ -1,19 +1,19 @@
-import { ReactNode } from "react";
-import MySearchContent from "./mySearch.tsx";
+import { ReactNode } from "react"
+import MySearchContent from "./mySearch.tsx"
 
 interface MySearchProps {
-	width?: string;
-	height?: string;
-	fontSize?: string;
-	onchange?: (event: React.ChangeEvent<HTMLInputElement>) => void; // Типизация onChange
+	width?: string
+	height?: string
+	fontSize?: string
+	onchange?: (event: React.ChangeEvent<HTMLInputElement>) => void // Типизация onChange
 }
 
 export default function MySearch({
-												width = "300px",
-												height = "40px",
-												fontSize = "16px",
-												onchange,
-											}: MySearchProps): ReactNode {
+	width = "300px",
+	height = "40px",
+	fontSize = "16px",
+	onchange,
+}: MySearchProps): ReactNode {
 	return (
 		<MySearchContent
 			width={width}
@@ -21,5 +21,5 @@ export default function MySearch({
 			fontSize={fontSize}
 			onchange={onchange}
 		/>
-	);
+	)
 }

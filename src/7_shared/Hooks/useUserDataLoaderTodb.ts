@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import axios, { AxiosResponse } from "axios";
+import { useEffect } from "react"
+import axios, { AxiosResponse } from "axios"
 
 export function useUserDataLoaderTodb<T>(
 	url: string,
@@ -8,17 +8,17 @@ export function useUserDataLoaderTodb<T>(
 ): void {
 	useEffect((): void => {
 		if (!url || !url.includes("http")) {
-			console.error("Invalid URL:", url);
-			setData(false);
-			return;
+			console.error("Invalid URL:", url)
+			setData(false)
+			return
 		}
 
-		const accessToken = localStorage.getItem("accessToken");
-		const refreshToken = localStorage.getItem("refreshToken");
+		const accessToken = localStorage.getItem("accessToken")
+		const refreshToken = localStorage.getItem("refreshToken")
 
 		if (!accessToken && !refreshToken) {
-			setData(false);
-			return;
+			setData(false)
+			return
 		}
 
 		axios
@@ -30,15 +30,15 @@ export function useUserDataLoaderTodb<T>(
 				},
 			})
 			.then((res: AxiosResponse<T>): void => {
-				const newAccessToken = res.headers["new-access-token"];
+				const newAccessToken = res.headers["new-access-token"]
 				if (newAccessToken) {
-					localStorage.setItem("accessToken", newAccessToken);
+					localStorage.setItem("accessToken", newAccessToken)
 				}
-				setData(res.data);
+				setData(res.data)
 			})
 			.catch((error) => {
-				console.error("Ошибка:", error.message);
-				setData(false);
-			});
-	}, [url, ...deps]);
+				console.error("Ошибка:", error.message)
+				setData(false)
+			})
+	}, [url, ...deps])
 }
