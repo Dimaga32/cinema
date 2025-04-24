@@ -1,0 +1,41 @@
+/* Стили для кнопки */
+.dropdownButton {
+	background-color: #1e2a47;
+	color: white; /* Белый цвет текста */
+	border: none;
+	padding: 10px 20px;
+	font-size: 16px;
+	border-radius: 5px;
+	&:hover {
+		background-color: #1e2a47; /* темно-синий фон */
+	}
+	&:active {
+		background-color: #1e2a47; /* темно-синий фон */
+	}
+	&:active {
+		background-color: #1e2a47 !important;
+	}
+	&:focus {
+		background-color: #1e2a47; /* темно-синий фон */
+		outline: none;
+	}
+	&:not(:focus) {
+		background-color: #163460; /* Цвет при фокусе */
+		box-shadow: none; /* Убираем стандартное обрамление фокуса */
+	}
+}
+
+/* Стили для выпадающего меню */
+.dropdownMenu {
+	text-align: center; /* Центрируем текст в меню */
+	min-width: 100%;
+}
+
+/* Стили для элементов в меню */
+.dropdownItem {
+	color: white; /* Белый цвет текста для вариантов */
+	background-color: transparent; /* Прозрачный фон для вариантов */
+	&:hover {
+		background-color: #2980b9; /* Цвет при наведении */
+	}
+}

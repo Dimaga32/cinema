@@ -1,0 +1,57 @@
+.grid {
+	margin-top: 8vh;
+	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: repeat(3, 30vw);
+	grid-auto-rows: 50vw;
+	gap: 1.5vw;
+	width: 100vw !important;
+	padding: 2vw;
+	justify-content: center;
+	align-items: center;
+}
+@media screen and (max-width: 992px) {
+	.grid {
+		box-sizing: border-box;
+		display: grid;
+		grid-template-columns: repeat(2, 45vw);
+		grid-auto-rows: 65vw;
+		gap: 1.5vw;
+		width: 100vw !important;
+		padding: 2vw;
+		justify-content: center;
+		align-items: center;
+	}
+}
+@media screen and (max-width: 650px) {
+	.grid {
+		box-sizing: border-box;
+		display: grid;
+		grid-template-columns: repeat(1, 90vw);
+		grid-auto-rows: 65vh;
+		gap: 1.5vw;
+		width: 100vw !important;
+		padding: 2vw;
+		justify-content: center;
+		align-items: center;
+	}
+}
+.sort {
+	width: 100%; /* Заменено на 100% для предотвращения скроллинга */
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	padding-left: 6vw;
+	padding-top: 10vh;
+}
+
+@media screen and (max-height: 800px) {
+	.sort {
+		padding-top: 16vh; /* Увеличение отступа для мобильных устройств */
+	}
+}
+.genandstar {
+	margin-left: 15px;
+	display: flex;
+	flex-direction: column;
+}

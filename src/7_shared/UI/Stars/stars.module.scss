@@ -1,0 +1,29 @@
+.starRating {
+	display: flex;
+	align-items: start;
+	justify-content: flex-start;
+	width: 100%; // Родительский контейнер занимает всю доступную ширину
+	margin-bottom: 10px;
+}
+
+.star {
+	flex: 1; // Звёздочки растягиваются на всю ширину контейнера
+	display: flex;
+	justify-content: center; // Центрируем звёздочки
+	align-items: center;
+	color: #ccc; // Цвет по умолчанию
+	transition: color 0.2s; // Плавное изменение цвета
+	cursor: pointer;
+}
+
+.fullStar {
+	color: gold; // Цвет для полных звёзд
+}
+
+.halfStar {
+	color: gold; // Цвет для половины звёзды
+}
+
+.emptyStar {
+	color: #ccc; // Цвет для пустых звёзд
+}

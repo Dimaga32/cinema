@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+   frontend:
+      build:
+         context: .
+         dockerfile: Dockerfile.frontend
+      ports:
+         - "3000:3000"
+      volumes:
+         - ./src:/app/src
+         - /app/node_modules
+      command: npm run preview -- --host --port 3000
+
+   backend:
+      build:
+         context: .
+         dockerfile: Dockerfile.backend
+      ports:
+         - "5000:5000"
+      depends_on:
+         - db
+      environment:
+         - DATABASE_URL=postgres://postgres:1111@db:5432/postgres
+      volumes:
+         - ./server:/app/server
+         - /app/node_modules
+      command: npm run start:backend
+
+   db:
+      image: postgres:latest
+      restart: always
+      ports:
+         - "5432:5432"
+      environment:
+         POSTGRES_USER: postgres
+         POSTGRES_PASSWORD: 1111
+         POSTGRES_DB: postgres
+      volumes:
+         - pgdata:/var/lib/postgresql/data
+         - ./backup.sql:/docker-entrypoint-initdb.d/backup.sql
+
+   pgadmin:
+      image: dpage/pgadmin4
+      restart: always
+      ports:
+         - "5050:80"
+      environment:
+         PGADMIN_DEFAULT_EMAIL: admin@example.com
+         PGADMIN_DEFAULT_PASSWORD: admin
+      volumes:
+         - ./pgadmin.config.json:/pgadmin4/pgadmin.config.json
+      depends_on:
+         - db
+
+volumes:
+   pgdata:

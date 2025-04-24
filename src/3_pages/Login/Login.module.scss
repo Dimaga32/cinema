@@ -1,0 +1,66 @@
+$form-bg-color: #1c3b60; // Темно-синий
+$form-text-color: #ffffff; // Белый
+$accent-color: #ff6600; // Оранжевый
+
+.formWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 80vh;
+	padding: 5vw;
+	background-color: $accent-color;
+}
+@media screen and (max-width: 1300px) {
+	.formWrapper {
+		padding-top: 12vh; /* Увеличение отступа для мобильных устройств */
+	}
+}
+.contactForm {
+	background-color: $form-bg-color;
+	color: $form-text-color;
+	padding: 40px;
+	padding-top: 20px;
+	border-radius: 8px;
+	width: 75vw;
+	max-width: 400px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+@media screen and (max-width: 768px) {
+	.contactForm {
+		width: 90vw;
+	}
+}
+
+.label {
+	font-size: 16px;
+	margin-bottom: 5px;
+}
+
+.input {
+	padding: 12px;
+	margin-bottom: 15px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 14px;
+	outline: none;
+	text-align: center; // Центрирование текста и плейсхолдера
+}
+
+.input:focus {
+	border-color: $accent-color;
+}
+
+.button {
+	background-color: $accent-color;
+	color: $form-text-color;
+	padding: 12px;
+	border: none;
+	border-radius: 4px;
+	font-size: 16px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
